@@ -1,3 +1,7 @@
+// manually tell JSLint that my code is aimed to be executed in browser
+// and thus (document, event, navigator, window, ...) global variables are defined
+/*jslint browser:true */
+
 var pX = 0,
     pY = 0,
     b = navigator.appName,
@@ -9,11 +13,55 @@ if ((navigator.userAgent.indexOf('MSIE 5') > 0) || (navigator.userAgent.indexOf(
 
 }
 
-document.onmousemove = mouseMove;
+function PopTip() {
 
-if (b === 'Netscape') {
+    'use strict';
 
-    document.captureEvents(Event.MOUSEMOVE);
+    var theLayer;
+
+    if (b === 'Netscape') {
+
+        theLayer = document.layers.ToolTip;
+
+        if ((pX + 120) > window.innerWidth) {
+
+            pX = window.innerWidth - 150;
+
+        }
+
+        theLayer.left = pX + 10;
+        theLayer.top = pY + 15;
+        theLayer.visibility = 'show';
+
+    } else {
+
+        theLayer = document.all.ToolTip;
+
+        if (theLayer) {
+
+            pX = event.x - 5;
+            pY = event.y;
+
+            if (addScroll) {
+
+                pX = pX + document.body.scrollLeft;
+                pY = pY + document.body.scrollTop;
+
+            }
+
+            if ((pX + 120) > document.body.clientWidth) {
+
+                pX = pX - 150;
+
+            }
+
+            theLayer.style.pixelLeft = pX + 10;
+            theLayer.style.pixelTop = pY + 15;
+            theLayer.style.visibility = 'visible';
+
+        }
+
+    }
 
 }
 
@@ -53,55 +101,11 @@ function mouseMove(evn) {
 
 }
 
-function PopTip() {
+document.onmousemove = mouseMove;
 
-    'use strict';
+if (b === 'Netscape') {
 
-    var theLayer;
-
-    if (b === 'Netscape') {
-
-        theLayer = eval('document.layers[\'ToolTip\']');
-
-        if ((pX + 120) > window.innerWidth) {
-
-            pX = window.innerWidth - 150;
-
-        }
-
-        theLayer.left = pX + 10;
-        theLayer.top = pY + 15;
-        theLayer.visibility = 'show';
-
-    } else {
-
-        theLayer = eval('document.all[\'ToolTip\']');
-
-        if (theLayer) {
-
-            pX = event.x - 5;
-            pY = event.y;
-
-            if (addScroll) {
-
-                pX = pX + document.body.scrollLeft;
-                pY = pY + document.body.scrollTop;
-
-            }
-
-            if ((pX + 120) > document.body.clientWidth) {
-
-                pX = pX - 150;
-
-            }
-
-            theLayer.style.pixelLeft = pX + 10;
-            theLayer.style.pixelTop = pY + 15;
-            theLayer.style.visibility = 'visible';
-
-        }
-
-    }
+    document.captureEvents(Event.MOUSEMOVE);
 
 }
 
@@ -147,12 +151,12 @@ function ShowMenu1() {
 
     if (b === 'Netscape') {
 
-        theLayer = eval('document.layers[\'menu1\']');
+        theLayer = document.layers.menu1;
         theLayer.visibility = 'show';
 
     } else {
 
-        theLayer = eval('document.all[\'menu1\']');
+        theLayer = document.all.menu1;
         theLayer.style.visibility = 'visible';
 
     }
@@ -183,12 +187,12 @@ function ShowMenu2() {
 
     if (b === 'Netscape') {
 
-        theLayer = eval('document.layers[\'menu2\']');
+        theLayer = document.layers.menu2;
         theLayer.visibility = 'show';
 
     } else {
 
-        theLayer = eval('document.all[\'menu2\']');
+        theLayer = document.all.menu2;
         theLayer.style.visibility = 'visible';
 
     }
