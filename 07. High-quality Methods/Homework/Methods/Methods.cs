@@ -28,7 +28,7 @@ namespace Methods
             Student peter = new Student("Peter", "Ivanov", new DateTime(1992, 03, 17), "From Sofia");
             Student stella = new Student("Stella", "Markova", new DateTime(1993, 11, 03), "From Vidin, gamer, high results");
 
-            Console.WriteLine("{0} older than {1} -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella).ToString());
+            Console.WriteLine("{0} is older than {1} -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella).ToString());
         }
 
         private static double CalculateTriangleArea(double sideA, double sideB, double sideC)
