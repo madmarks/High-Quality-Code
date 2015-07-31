@@ -2,27 +2,43 @@
 
 public class CSharpExam : Exam
 {
-    public int Score { get; private set; }
+    private const int MinScore = 0;
+    private const int MaxScore = 100;
+
+    private int score;
 
     public CSharpExam(int score)
     {
-        if (score < 0)
+        this.Score = score;
+    }
+
+    public int Score
+    {
+        get
         {
-            throw new NullReferenceException();
+            return this.score;
         }
 
-        this.Score = score;
+        private set
+        {
+            if (value < MinScore)
+            {
+                throw new ArgumentOutOfRangeException("Scroe must have a positive value");
+            }
+
+            this.score = value;
+        }
     }
 
     public override ExamResult Check()
     {
-        if (Score < 0 || Score > 100)
+        if (this.score < 0 || this.score > MaxScore)
         {
-            throw new InvalidOperationException();
+            throw new ArgumentOutOfRangeException(string.Format("Score must be in the range beween {0} and {1}", MinScore, MaxScore));
         }
         else
         {
-            return new ExamResult(this.Score, 0, 100, "Exam results calculated by score.");
+            return new ExamResult(this.Score, MinScore, MaxScore, "Exam results calculated by score.");
         }
     }
 }
