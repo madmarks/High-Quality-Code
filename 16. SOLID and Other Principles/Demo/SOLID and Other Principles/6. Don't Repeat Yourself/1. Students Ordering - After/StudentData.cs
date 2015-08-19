@@ -6,7 +6,7 @@
 
     public class StudentData
     {
-        private IEnumerable<Student> students;
+        private readonly IEnumerable<Student> students;
 
         public StudentData()
         {
@@ -39,7 +39,7 @@
             return this.OrderByExpression(st => st.Participations);
         }
 
-        private IEnumerable<Student> OrderByExpression<Condition>(Func<Student, Condition> expression)
+        private IEnumerable<Student> OrderByExpression<TCondition>(Func<Student, TCondition> expression)
         {
             if (!this.students.Any())
             {

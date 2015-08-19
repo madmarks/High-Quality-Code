@@ -86,7 +86,6 @@
     <Compile Include="2. Open - Closed\3. Before - Shopping Cart\OnlineOrder.cs" />
     <Compile Include="2. Open - Closed\3. Before - Shopping Cart\Order.cs" />
     <Compile Include="2. Open - Closed\3. Before - Shopping Cart\OrderItem.cs" />
-    <Compile Include="2. Open - Closed\3. Before - Shopping Cart\PaymentDetails.cs" />
     <Compile Include="3. Liskov Substitution\1. After - Square\Rectangle.cs" />
     <Compile Include="3. Liskov Substitution\1. After - Square\Shape.cs" />
     <Compile Include="3. Liskov Substitution\1. After - Square\Square.cs" />
@@ -109,6 +108,9 @@
     <Compile Include="3. Liskov Substitution\3. Before - Movement\MovableObject.cs" />
     <Compile Include="3. Liskov Substitution\3. Before - Movement\RotatableObject.cs" />
     <Compile Include="3. Liskov Substitution\3. Before - Movement\TranslatableObject.cs" />
+    <Compile Include="3. Liskov Substitution\VirtualCallInConstructor\BaseClass.cs" />
+    <Compile Include="3. Liskov Substitution\VirtualCallInConstructor\BaseClassImpl.cs" />
+    <Compile Include="3. Liskov Substitution\VirtualCallInConstructor\DatabaseRepository.cs" />
     <Compile Include="4. Interface Segregation\1. Worker - After\Contracts\IEater.cs" />
     <Compile Include="4. Interface Segregation\1. Worker - After\Contracts\ISleeper.cs" />
     <Compile Include="4. Interface Segregation\1. Worker - After\Contracts\IWorker.cs" />
