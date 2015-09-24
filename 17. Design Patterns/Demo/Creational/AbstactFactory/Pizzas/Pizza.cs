@@ -12,15 +12,15 @@
             this.ingredients = new List<string>(ingredients);
         }
 
-        public IEnumerable<string> Ingredients
+        protected abstract string Name { get; }
+
+        private IEnumerable<string> Ingredients
         {
             get
             {
                 return this.ingredients;
             }
         }
-
-        public abstract string Name { get; }
 
         public override string ToString()
         {
